@@ -2,7 +2,7 @@
 
 import { Resend } from 'resend';
 
-const ADMIN_EMAIL = 'boakyesarpong18@gmail.com';
+const ADMIN_EMAIL = process.env.ADMIN_NOTIFICATION_EMAIL || 'boakyesarpong18@gmail.com';
 
 // Lazy initialization to avoid build-time errors
 function getResendClient() {
