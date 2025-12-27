@@ -746,12 +746,9 @@ export default function BookingForm() {
                             Processing Payment...
                         </>
                     ) : (
-                        <div className="flex items-center justify-center gap-2 flex-wrap">
-                            <DollarSign className="w-5 h-5 shrink-0" />
-                            <span>
-                                Pay Now - {rateLoading ? `$${selectedService.priceUSD}` : formatPrice(selectedService.priceUSD!)}
-                            </span>
-                        </div>
+                        <span className="text-center w-full">
+                            Pay Now - {rateLoading ? `$${selectedService.priceUSD}` : formatPrice(selectedService.priceUSD!)}
+                        </span>
                     )}
                 </Button>
             ) : (
