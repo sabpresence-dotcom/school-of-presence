@@ -3,6 +3,7 @@ import { Plus_Jakarta_Sans, Outfit } from 'next/font/google';
 import './globals.css';
 import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/Footer';
+import { ClientLayout } from '@/components/ClientLayout';
 
 export const dynamic = 'force-dynamic';
 
@@ -76,16 +77,18 @@ export default function RootLayout({
     children: React.ReactNode;
 }) {
     return (
-        <html lang="en" className={`${jakarta.variable} ${outfit.variable} relative`}>
-            <body className="font-sans antialiased relative">
+        <html lang="en" className={`${jakarta.variable} ${outfit.variable} relative overflow-x-hidden`}>
+            <body className="font-sans antialiased relative overflow-x-hidden max-w-full">
                 <a href="#main-content" className="skip-to-content">
                     Skip to main content
                 </a>
-                <Navbar />
-                <main id="main-content" className="min-h-screen relative">
-                    {children}
-                </main>
-                <Footer />
+                <ClientLayout>
+                    <Navbar />
+                    <main id="main-content" className="min-h-screen relative">
+                        {children}
+                    </main>
+                    <Footer />
+                </ClientLayout>
             </body>
         </html>
     );

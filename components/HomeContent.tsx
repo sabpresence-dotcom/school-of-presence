@@ -107,9 +107,9 @@ export function HomeContent({ services }: HomeContentProps) {
                             whileInView="visible"
                             viewport={{ once: true }}
                             variants={fadeInUp}
-                            className="space-y-8 order-1 lg:order-2 text-center lg:text-left"
+                            className="space-y-8 order-1 lg:order-2 text-center lg:text-left flex flex-col items-center lg:items-start"
                         >
-                            <div className="inline-flex items-center space-x-2 border border-slate-600/50 rounded-full px-4 py-1.5 bg-slate-800/50">
+                            <div className="inline-flex items-center justify-center space-x-2 border border-slate-600/50 rounded-full px-4 py-1.5 bg-slate-800/50">
                                 <span className="text-white text-sm font-medium tracking-wide uppercase">About Me</span>
                             </div>
 
@@ -139,9 +139,9 @@ export function HomeContent({ services }: HomeContentProps) {
                             whileInView="visible"
                             viewport={{ once: true }}
                             variants={fadeInUp}
-                            className="space-y-8"
+                            className="space-y-8 text-center lg:text-left"
                         >
-                            <h2 className="text-4xl sm:text-5xl font-bold font-heading text-white">
+                            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold font-heading text-white">
                                 School of <span className="text-white">Presence</span>
                             </h2>
                             <h3 className="text-2xl font-heading text-slate-300">
@@ -314,9 +314,9 @@ export function HomeContent({ services }: HomeContentProps) {
                             <motion.div
                                 key={index}
                                 variants={staggerItem}
-                                className="flex items-start space-x-4 p-6 rounded-xl bg-slate-800/50 border border-slate-700/50 hover:bg-slate-700/60 transition-all duration-200 hover:border-primary/50 cursor-default hover:translate-x-1 hover:scale-[1.01]"
+                                className="flex items-center space-x-4 p-6 rounded-xl bg-slate-800/50 border border-slate-700/50 hover:bg-slate-700/60 transition-all duration-200 hover:border-primary/50 cursor-default hover:translate-x-1 hover:scale-[1.01]"
                             >
-                                <Target className="w-6 h-6 text-white flex-shrink-0 mt-1" />
+                                <Target className="w-6 h-6 text-white flex-shrink-0" />
                                 <p className="text-slate-300">{area}</p>
                             </motion.div>
                         ))}
@@ -377,7 +377,7 @@ export function HomeContent({ services }: HomeContentProps) {
                         whileInView="visible"
                         viewport={{ once: true }}
                         variants={fadeInUp}
-                        className="text-4xl sm:text-5xl font-bold font-heading text-center text-white mb-20"
+                        className="text-3xl sm:text-4xl md:text-5xl font-bold font-heading text-center text-white mb-20"
                     >
                         Other Ventures
                     </motion.h2>
@@ -437,7 +437,7 @@ export function HomeContent({ services }: HomeContentProps) {
                         viewport={{ once: true }}
                         variants={fadeInUp}
                     >
-                        <h2 className="text-5xl sm:text-6xl lg:text-7xl font-bold font-heading text-white mb-8">
+                        <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold font-heading text-white mb-8">
                             Start Your <span className="text-white">Coaching Journey Today</span>
                         </h2>
                         <p className="text-xl text-slate-300 mb-12 max-w-2xl mx-auto">

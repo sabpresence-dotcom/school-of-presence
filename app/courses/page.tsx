@@ -29,7 +29,7 @@ export default async function CoursesPage() {
 
             <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-20 relative z-10">
                 <div className="text-center mb-16">
-                    <h1 className="text-5xl sm:text-6xl font-bold font-heading text-white mb-6">
+                    <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold font-heading text-white mb-6">
                         Focused Courses
                     </h1>
                     <p className="text-xl text-slate-400 max-w-3xl mx-auto font-light mb-8">

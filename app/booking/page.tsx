@@ -7,7 +7,7 @@ export default function BookingPage() {
         <div className="min-h-screen bg-background pt-32 pb-20 flex flex-col items-center justify-center">
             <div className="w-full h-full max-w-4xl mx-auto px-4">
                 <div className="text-center mb-12">
-                    <h1 className="text-4xl sm:text-5xl font-bold font-heading text-white mb-6">
+                    <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold font-heading text-white mb-6">
                         Book a Service
                     </h1>
                     <p className="text-xl text-slate-400 max-w-2xl mx-auto font-light">

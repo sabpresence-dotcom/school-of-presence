@@ -260,7 +260,7 @@ export default function BookingForm() {
             console.error('Booking submission error:', error);
             const errorMessage = error?.message || 'Failed to submit booking.';
             let actionableMessage = 'Please try again.';
-            
+
             if (errorMessage.includes('network') || errorMessage.includes('fetch')) {
                 actionableMessage = 'Please check your internet connection and try again.';
             } else if (errorMessage.includes('timeout')) {
@@ -270,7 +270,7 @@ export default function BookingForm() {
             } else if (errorMessage.includes('500') || errorMessage.includes('server')) {
                 actionableMessage = 'Our server encountered an issue. Please try again later or contact support.';
             }
-            
+
             setErrors({ ...errors, serviceType: `${errorMessage} ${actionableMessage}` });
         } finally {
             setIsSubmitting(false);
@@ -312,31 +312,34 @@ export default function BookingForm() {
                         }
                     ]
                 },
-                callback: async function (response: { reference: string }) {
-                    // Payment successful
-                    try {
-                        const data = await submitBooking('paid', response.reference);
+                callback: (response: { reference: string }) => {
+                    // Payment successful - use IIFE to handle async operations
+                    (async () => {
+                        try {
+                            const data = await submitBooking('paid', response.reference);
 
-                        if (selectedService.type === 'consultation' && data.calComUrl) {
-                            // Redirect to Cal.com for scheduling
-                            setCalComUrl(data.calComUrl);
-                            setSuccessMessage('Payment successful! Please schedule your consultation session.');
-                            setSubmitted(true);
-                            // Auto-redirect after a short delay
-                            setTimeout(() => {
-                                window.open(data.calComUrl, '_blank');
-                            }, 2000);
-                        } else {
-                            // Coaching - show success message
-                            setSuccessMessage('Payment successful! We will contact you shortly to schedule your coaching sessions.');
-                            setSubmitted(true);
+                            if (selectedService.type === 'consultation' && data.calComUrl) {
+                                // Redirect to Cal.com for scheduling
+                                setCalComUrl(data.calComUrl);
+                                setSuccessMessage('Payment successful! Please schedule your consultation session.');
+                                setSubmitted(true);
+                                // Auto-redirect after a short delay
+                                setTimeout(() => {
+                                    window.open(data.calComUrl, '_blank');
+                                }, 2000);
+                            } else {
+                                // Coaching - show success message
+                                setSuccessMessage('Payment successful! We will contact you shortly to schedule your coaching sessions.');
+                                setSubmitted(true);
+                            }
+                        } catch (error: any) {
+                            console.error('Post-payment error:', error);
+                            const errorMessage = error?.message || 'Unknown error';
+                            alert(`Payment was successful (Reference: ${response.reference}), but we encountered an issue recording your booking.\n\nPlease contact support with this reference number, and we'll resolve this immediately.\n\nError: ${errorMessage}`);
+                        } finally {
+                            setIsPaymentProcessing(false);
                         }
-                    } catch (error: any) {
-                        console.error('Post-payment error:', error);
-                        const errorMessage = error?.message || 'Unknown error';
-                        alert(`Payment was successful (Reference: ${response.reference}), but we encountered an issue recording your booking.\n\nPlease contact support with this reference number, and we'll resolve this immediately.\n\nError: ${errorMessage}`);
-                    }
-                    setIsPaymentProcessing(false);
+                    })();
                 },
                 onClose: function () {
                     setIsPaymentProcessing(false);
@@ -353,13 +356,13 @@ export default function BookingForm() {
             console.error('Payment initialization error:', error);
             const errorMessage = error?.message || 'Unknown error';
             let actionableMessage = 'Please try again.';
-            
+
             if (errorMessage.includes('PaystackPop') || errorMessage.includes('script')) {
                 actionableMessage = 'Payment system is still loading. Please wait a moment and try again.';
             } else if (errorMessage.includes('network')) {
                 actionableMessage = 'Please check your internet connection and try again.';
             }
-            
+
             alert(`Failed to initialize payment: ${errorMessage}\n\n${actionableMessage}`);
             setIsPaymentProcessing(false);
         }
@@ -493,7 +496,7 @@ export default function BookingForm() {
                             <span className="font-heading">Service Price</span>
                         </div>
                         <div className="text-right">
-                            <span className="text-2xl font-bold text-white">
+                            <span className="text-lg sm:text-2xl font-bold text-white">
                                 {rateLoading ? `$${selectedService.priceUSD}` : formatPrice(selectedService.priceUSD)}
                             </span>
                         </div>
@@ -524,9 +527,8 @@ export default function BookingForm() {
                             }
                         }}
                         onBlur={(e) => handleFieldBlur('fullName', e.target.value)}
-                        className={`bg-white/5 border-white/10 text-white focus:border-white/50 h-12 ${
-                            errors.fullName ? 'border-red-500/50 focus:border-red-500' : ''
-                        }`}
+                        className={`bg-white/5 border-white/10 text-white focus:border-white/50 h-12 ${errors.fullName ? 'border-red-500/50 focus:border-red-500' : ''
+                            }`}
                         placeholder="Enter your full name"
                         aria-invalid={!!errors.fullName}
                         aria-describedby={errors.fullName ? 'fullName-error' : undefined}
@@ -557,9 +559,8 @@ export default function BookingForm() {
                                 }
                             }}
                             onBlur={(e) => handleFieldBlur('email', e.target.value)}
-                            className={`bg-white/5 border-white/10 text-white focus:border-white/50 h-12 ${
-                                errors.email ? 'border-red-500/50 focus:border-red-500' : ''
-                            }`}
+                            className={`bg-white/5 border-white/10 text-white focus:border-white/50 h-12 ${errors.email ? 'border-red-500/50 focus:border-red-500' : ''
+                                }`}
                             placeholder="you@example.com"
                             autoComplete="email"
                             aria-invalid={!!errors.email}
@@ -589,9 +590,8 @@ export default function BookingForm() {
                                 }
                             }}
                             onBlur={(e) => handleFieldBlur('phone', e.target.value)}
-                            className={`bg-white/5 border-white/10 text-white focus:border-white/50 h-12 ${
-                                errors.phone ? 'border-red-500/50 focus:border-red-500' : ''
-                            }`}
+                            className={`bg-white/5 border-white/10 text-white focus:border-white/50 h-12 ${errors.phone ? 'border-red-500/50 focus:border-red-500' : ''
+                                }`}
                             placeholder="+233 XX XXX XXXX"
                             autoComplete="tel"
                             aria-invalid={!!errors.phone}
@@ -608,8 +608,8 @@ export default function BookingForm() {
 
                 <div className="space-y-2">
                     <Label htmlFor="country" className="text-slate-300">Country</Label>
-                    <Select 
-                        value={country} 
+                    <Select
+                        value={country}
                         onValueChange={(value) => {
                             setCountry(value);
                             if (errors.country) {
@@ -621,10 +621,9 @@ export default function BookingForm() {
                             }
                         }}
                     >
-                        <SelectTrigger 
-                            className={`bg-white/5 border-white/10 text-white focus:border-white/50 h-12 ${
-                                errors.country ? 'border-red-500/50 focus:border-red-500' : ''
-                            }`}
+                        <SelectTrigger
+                            className={`bg-white/5 border-white/10 text-white focus:border-white/50 h-12 ${errors.country ? 'border-red-500/50 focus:border-red-500' : ''
+                                }`}
                             aria-invalid={!!errors.country}
                             aria-describedby={errors.country ? 'country-error' : undefined}
                         >
@@ -737,7 +736,7 @@ export default function BookingForm() {
                 <Button
                     type="button"
                     variant="default"
-                    className="w-full h-auto py-4 text-base sm:text-lg font-heading tracking-wider shadow-lg shadow-white/5 hover:shadow-white/10 transition-all duration-300 whitespace-normal"
+                    className="w-full h-12 sm:h-14 text-sm sm:text-lg font-heading tracking-wider shadow-lg shadow-white/5 hover:shadow-white/10 transition-all duration-300"
                     disabled={isPaymentProcessing}
                     onClick={handlePayment}
                 >
@@ -759,7 +758,7 @@ export default function BookingForm() {
                 <Button
                     type="submit"
                     variant="default"
-                    className="w-full h-14 text-lg font-heading tracking-wider shadow-lg shadow-white/5 hover:shadow-white/10 transition-all duration-300"
+                    className="w-full h-12 sm:h-14 text-sm sm:text-lg font-heading tracking-wider shadow-lg shadow-white/5 hover:shadow-white/10 transition-all duration-300"
                     disabled={isSubmitting}
                 >
                     {isSubmitting ? (

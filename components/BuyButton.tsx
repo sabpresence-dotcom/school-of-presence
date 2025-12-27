@@ -91,8 +91,12 @@ export default function BuyButton({ courseId, price, title, user, className }: B
                 currency: config.currency,
                 ref: config.reference,
                 metadata: config.metadata,
-                callback: function (response: PaystackResponse) { onSuccess(response); },
-                onClose: onClose,
+                callback: (response: PaystackResponse) => {
+                    onSuccess(response);
+                },
+                onClose: () => {
+                    onClose();
+                },
             });
 
             if (handler) {
@@ -111,8 +115,12 @@ export default function BuyButton({ courseId, price, title, user, className }: B
                             currency: config.currency,
                             ref: config.reference,
                             metadata: config.metadata,
-                            callback: function (response: PaystackResponse) { onSuccess(response); },
-                            onClose: onClose,
+                            callback: (response: PaystackResponse) => {
+                                onSuccess(response);
+                            },
+                            onClose: () => {
+                                onClose();
+                            },
                         });
                         newHandler.openIframe();
                     }

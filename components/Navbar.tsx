@@ -31,10 +31,10 @@ export function Navbar() {
     return (
         <nav
             className={cn(
-                "fixed z-50 px-6 box-border transition-all duration-300",
+                "fixed z-50 px-4 md:px-6 box-border transition-all duration-300",
                 scrolled
-                    ? "glass border border-slate-700/50 shadow-2xl shadow-blue-950/50 py-3 w-[95%] max-w-[1200px] left-1/2 -translate-x-1/2 top-6 rounded-full"
-                    : "bg-transparent py-6 border-b border-transparent w-full left-0 top-0"
+                    ? "glass border border-slate-700/50 shadow-2xl shadow-blue-950/50 py-3 w-[calc(100%-24px)] max-w-[1200px] left-1/2 -translate-x-1/2 top-4 md:top-6 rounded-full"
+                    : "bg-transparent py-4 md:py-6 border-b border-transparent w-full left-0 top-0"
             )}
             aria-label="Main navigation"
         >

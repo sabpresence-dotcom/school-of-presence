@@ -111,7 +111,7 @@ export async function POST(request: NextRequest) {
         // Generate Cal.com prefill URL for scheduling (consultation only)
         let calComUrl = null;
         if (serviceType === 'consultation') {
-            const calComBaseUrl = 'https://cal.com/andrews-4babzd/consultation-60-mins';
+            const calComBaseUrl = 'https://cal.com/andrews-4babzd/consultation-30-mins';
             const calComParams = new URLSearchParams({
                 name: fullName,
                 email: email,
