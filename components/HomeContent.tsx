@@ -78,7 +78,6 @@ export function HomeContent({ services }: HomeContentProps) {
                         >
                             <div className="relative w-full max-w-[500px] h-full">
                                 {/* Decorative glow behind image */}
-                                {/* Decorative glow behind image */}
                                 <div className="absolute -inset-4 bg-primary/10 blur-3xl rounded-full opacity-30" />
 
                                 {/* Main image container */}
@@ -110,99 +109,38 @@ export function HomeContent({ services }: HomeContentProps) {
                             className="space-y-8 order-1 lg:order-2 text-center lg:text-left flex flex-col items-center lg:items-start"
                         >
                             <div className="inline-flex items-center justify-center space-x-2 border border-slate-600/50 rounded-full px-4 py-1.5 bg-slate-800/50">
-                                <span className="text-white text-sm font-medium tracking-wide uppercase">About Me</span>
+                                <span className="text-white text-sm font-medium tracking-wide uppercase">About & Approach</span>
                             </div>
 
                             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold font-heading leading-tight text-white">
-                                I am an entrepreneur, consultant, and communication coach dedicated to helping people communicate with <span className="text-white underline decoration-slate-400/50 underline-offset-4">confidence and clarity.</span>
+                                Helping leaders <span className="text-white underline decoration-slate-400/50 underline-offset-4">speak with confidence</span> and build powerful personal brands.
                             </h2>
 
                             <div className="space-y-6 text-lg text-slate-300 leading-relaxed font-light">
                                 <p>
-                                    Through <span className="text-white font-medium">School of Presence</span>, I help leaders, entrepreneurs, and professionals speak with influence while building personal brands that command respect.
+                                    Through <span className="text-white font-medium">School of Presence</span>, I coach executives, entrepreneurs, and professionals in mastering impactful communication—from public speaking to personal branding.
                                 </p>
                                 <p>
-                                    I&apos;m also co-founder and CEO of <span className="text-white font-medium">Trekenvyl Footwear</span>, a premium footwear brand for executives who value quality and craftsmanship.
+                                    I&apos;m also co-founder and CEO of <span className="text-white font-medium">Trekenvyl Footwear</span>, a premium brand for executives who value quality and craftsmanship.
                                 </p>
                             </div>
-                        </motion.div>
-                    </div>
-                </div>
-            </section>
 
-            {/* School of Presence */}
-            <section className="py-16 md:py-24 lg:py-32 relative">
-                <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-                        <motion.div
-                            initial="hidden"
-                            whileInView="visible"
-                            viewport={{ once: true }}
-                            variants={fadeInUp}
-                            className="space-y-8 text-center lg:text-left"
-                        >
-                            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold font-heading text-white">
-                                School of <span className="text-white">Presence</span>
-                            </h2>
-                            <h3 className="text-2xl font-heading text-slate-300">
-                                Speak with Presence. Lead with Confidence.
-                            </h3>
-                            <p className="text-lg text-slate-300 leading-relaxed">
-                                The School of Presence is a communication coaching brand designed to help executives, entrepreneurs, leaders, and communication enthusiasts master the art of speaking with impact, both offline and online.
-                            </p>
-                            <p className="text-lg text-slate-300 leading-relaxed">
-                                We help you master impactful communication, from public speaking to personal branding, so you show up powerfully in every setting.
-                            </p>
-
-                            <div className="bg-slate-900/50 border border-slate-600/50 p-8 rounded-2xl backdrop-blur-sm">
-                                <h4 className="text-xl font-heading text-white mb-4">Our Aim</h4>
-                                <p className="text-slate-300 italic">
-                                    &quot;To train individuals and organisations to communicate with confidence, composure, and clarity so they can influence, inspire, and lead effectively.&quot;
-                                </p>
+                            {/* Quick Info Cards */}
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full">
+                                <div className="bg-slate-900/50 border border-slate-700/50 p-6 rounded-xl">
+                                    <h4 className="text-sm font-heading text-white mb-2 flex items-center">
+                                        <Globe className="w-4 h-4 text-white mr-2" /> Delivery
+                                    </h4>
+                                    <p className="text-slate-300 text-sm">In-person • Online • Hybrid</p>
+                                </div>
+                                <div className="bg-slate-900/50 border border-slate-700/50 p-6 rounded-xl">
+                                    <h4 className="text-sm font-heading text-white mb-2 flex items-center">
+                                        <Users className="w-4 h-4 text-white mr-2" /> Clients
+                                    </h4>
+                                    <p className="text-slate-300 text-sm">Leaders • Entrepreneurs • Professionals</p>
+                                </div>
                             </div>
                         </motion.div>
-
-                        <div className="space-y-8">
-                            {/* Delivery Modes */}
-                            <motion.div
-                                initial="hidden"
-                                whileInView="visible"
-                                viewport={{ once: true }}
-                                variants={fadeInRight}
-                                className="bg-slate-950 border border-slate-700/50 p-8 rounded-2xl shadow-xl"
-                            >
-                                <h4 className="text-xl font-heading text-white mb-6 flex items-center">
-                                    <Globe className="w-5 h-5 text-white mr-2" /> Delivery Modes
-                                </h4>
-                                <div className="flex flex-wrap gap-4">
-                                    {['In-person', 'Online', 'Hybrid'].map((mode) => (
-                                        <span key={mode} className="px-4 py-2 bg-slate-800/60 text-white border border-slate-600/50 rounded-full text-sm font-medium uppercase tracking-wide">
-                                            {mode}
-                                        </span>
-                                    ))}
-                                </div>
-                            </motion.div>
-
-                            {/* Our Clients */}
-                            <motion.div
-                                initial="hidden"
-                                whileInView="visible"
-                                viewport={{ once: true }}
-                                variants={fadeInRight}
-                                className="bg-slate-950 border border-slate-700/50 p-8 rounded-2xl shadow-xl"
-                            >
-                                <h4 className="text-xl font-heading text-white mb-6 flex items-center">
-                                    <Users className="w-5 h-5 text-white mr-2" /> Our Clients
-                                </h4>
-                                <div className="flex flex-wrap gap-3">
-                                    {['Entrepreneurs', 'Executives', 'Political Leaders', 'Religious Leaders', 'Academic Leaders', 'Public Speakers', 'Communication Enthusiasts'].map((client) => (
-                                        <span key={client} className="text-slate-300 text-sm border border-slate-700/50 px-3 py-1 rounded-md bg-slate-800/50">
-                                            {client}
-                                        </span>
-                                    ))}
-                                </div>
-                            </motion.div>
-                        </div>
                     </div>
                 </div>
             </section>
@@ -284,87 +222,52 @@ export function HomeContent({ services }: HomeContentProps) {
                 </div>
             </section>
 
-            {/* Coaching Focus Areas */}
-            <section className="py-16 md:py-24 lg:py-32 relative overflow-hidden">
+            {/* What You'll Achieve */}
+            <section className="py-16 md:py-24 lg:py-32 relative overflow-hidden bg-slate-900/20">
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-                    <motion.h2
+                    <motion.div
                         initial="hidden"
                         whileInView="visible"
                         viewport={{ once: true }}
                         variants={fadeInUp}
-                        className="text-3xl sm:text-4xl font-bold font-heading text-center text-white mb-16"
+                        className="text-center mb-16"
                     >
-                        Coaching Focus Areas
-                    </motion.h2>
+                        <h2 className="text-3xl sm:text-4xl font-bold font-heading text-white mb-4">
+                            What You&apos;ll Achieve
+                        </h2>
+                        <p className="text-slate-300 text-lg max-w-2xl mx-auto">
+                            Develop the communication skills to influence, inspire, and lead with confidence.
+                        </p>
+                    </motion.div>
+
                     <motion.div
                         initial="hidden"
                         whileInView="visible"
                         viewport={{ once: true }}
                         variants={staggerContainer}
-                        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+                        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto"
                     >
                         {[
-                            "Communicate with confidence and clarity",
-                            "Develop an engaging, authentic voice",
-                            "Present powerfully on stage and camera",
-                            "Build a compelling personal brand",
-                            "Master persuasion and negotiation",
-                            "Strengthen networking communication"
-                        ].map((area, index) => (
+                            { title: "Speak with Confidence", icon: Target, desc: "Express your thoughts effortlessly with clarity and composure." },
+                            { title: "Authentic Voice", icon: Mic, desc: "Develop a speaking style that feels genuine and engaging." },
+                            { title: "Personal Brand", icon: Star, desc: "Show up powerfully both online and offline." },
+                            { title: "Stage Presence", icon: Presentation, desc: "Present with impact on stage and camera." },
+                            { title: "Persuasion Skills", icon: MessageSquareQuote, desc: "Master the art of influence and negotiation." },
+                            { title: "Professional Network", icon: Users, desc: "Communicate effectively in any business setting." }
+                        ].map((item, index) => (
                             <motion.div
                                 key={index}
                                 variants={staggerItem}
-                                className="flex items-center space-x-4 p-6 rounded-xl bg-slate-800/50 border border-slate-700/50 hover:bg-slate-700/60 transition-all duration-200 hover:border-primary/50 cursor-default hover:translate-x-1 hover:scale-[1.01]"
+                                className="flex flex-col items-center text-center p-6 rounded-xl bg-slate-800/40 border border-slate-700/50 hover:bg-slate-700/50 hover:border-primary/50 transition-all duration-200 cursor-default hover:scale-[1.02]"
                             >
-                                <Target className="w-6 h-6 text-white flex-shrink-0" />
-                                <p className="text-slate-300">{area}</p>
+                                <div className="mb-4 w-12 h-12 rounded-full bg-slate-900/80 border border-slate-600/50 flex items-center justify-center">
+                                    <item.icon className="w-6 h-6 text-white" />
+                                </div>
+                                <h3 className="text-lg font-heading font-bold text-white mb-2">{item.title}</h3>
+                                <p className="text-slate-300 text-sm">{item.desc}</p>
                             </motion.div>
                         ))}
                     </motion.div>
-                </div>
-            </section>
-
-            {/* Outcomes */}
-            <section className="py-16 md:py-24 lg:py-32 bg-slate-800/30">
-                <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="max-w-4xl mx-auto">
-                        <motion.h2
-                            initial="hidden"
-                            whileInView="visible"
-                            viewport={{ once: true }}
-                            variants={fadeInUp}
-                            className="text-3xl sm:text-4xl font-bold font-heading text-center text-white mb-16"
-                        >
-                            Outcomes
-                        </motion.h2>
-                        <motion.div
-                            initial="hidden"
-                            whileInView="visible"
-                            viewport={{ once: true }}
-                            variants={staggerContainer}
-                            className="space-y-8"
-                        >
-                            {[
-                                { title: "Speak with confidence", desc: "Express your thoughts effortlessly." },
-                                { title: "Find your authentic voice", desc: "Develop a style that feels genuine." },
-                                { title: "Build your personal brand", desc: "Show up powerfully online and offline." }
-                            ].map((outcome, index) => (
-                                <motion.div
-                                    key={index}
-                                    variants={staggerItem}
-                                    className="flex flex-col md:flex-row items-center md:items-start text-center md:text-left gap-6 p-8 bg-slate-950 border border-slate-600/50 rounded-2xl hover:shadow-2xl hover:shadow-primary/10 transition-all duration-200 cursor-default hover:scale-[1.01]"
-                                >
-                                    <div className="w-12 h-12 rounded-full bg-slate-700/70 flex items-center justify-center flex-shrink-0 text-white font-bold text-xl">
-                                        {index + 1}
-                                    </div>
-                                    <div>
-                                        <h3 className="text-xl font-bold text-white mb-2">{outcome.title}</h3>
-                                        <p className="text-slate-300">{outcome.desc}</p>
-                                    </div>
-                                </motion.div>
-                            ))}
-                        </motion.div>
-                    </div>
                 </div>
             </section>
 
@@ -437,15 +340,15 @@ export function HomeContent({ services }: HomeContentProps) {
                         viewport={{ once: true }}
                         variants={fadeInUp}
                     >
-                        <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold font-heading text-white mb-8">
-                            Start Your <span className="text-white">Coaching Journey Today</span>
+                        <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold font-heading text-white mb-8">
+                            Ready to <span className="text-white">Transform Your Communication?</span>
                         </h2>
                         <p className="text-xl text-slate-300 mb-12 max-w-2xl mx-auto">
                             Let’s help you communicate with confidence, connect deeply, and lead with presence.
                         </p>
                         <Button variant="default" size="lg" className="text-base px-8 py-5 h-auto rounded-full shadow-2xl shadow-primary/10 hover:shadow-primary/20 transition-all duration-500" asChild>
                             <Link href="/booking">
-                                Book Your Consultation
+                                Book a Consultation
                             </Link>
                         </Button>
                     </motion.div>
