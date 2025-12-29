@@ -33,8 +33,12 @@ export function ForgotPasswordModal({ isOpen, onClose }: ForgotPasswordModalProp
         }
 
         try {
+            // Get base URL and ensure no trailing slash
+            const baseUrl = (process.env.NEXT_PUBLIC_SITE_URL || window.location.origin).replace(/\/$/, '');
+            const redirectTo = `${baseUrl}/auth/callback?next=/dashboard/settings`;
+
             const { error } = await supabase.auth.resetPasswordForEmail(email, {
-                redirectTo: `${process.env.NEXT_PUBLIC_SITE_URL || window.location.origin}/auth/callback?next=/dashboard/settings`,
+                redirectTo,
             });
 
             if (error) throw error;
