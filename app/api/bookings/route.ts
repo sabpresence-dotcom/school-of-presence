@@ -1,6 +1,7 @@
 import { createServerClient } from '@/lib/supabase/server';
 import { NextRequest, NextResponse } from 'next/server';
-import { sendBookingNotification } from '@/app/actions/send-notification';
+import { sendBookingNotification, sendPaymentConfirmation } from '@/app/actions/send-notification';
+import { logger } from '@/lib/logger';
 
 export async function POST(request: NextRequest) {
     try {
@@ -82,7 +83,7 @@ export async function POST(request: NextRequest) {
             .single();
 
         if (error) {
-            console.error('Supabase error:', error);
+            logger.error('Failed to create booking in database', error, { email, serviceType });
             return NextResponse.json(
                 { error: 'Failed to create booking' },
                 { status: 500 }
@@ -104,8 +105,29 @@ export async function POST(request: NextRequest) {
         });
 
         if (!emailResult.success) {
-            console.error('Email notification failed:', emailResult.error);
+            logger.warn('Booking notification email failed', { bookingId: data.id, error: emailResult.error });
             // Don't fail the booking if email fails, just log it
+        }
+
+        // Send payment confirmation to customer if paid
+        if (paymentStatus === 'paid' && paymentReference) {
+            const paymentConfirmation = await sendPaymentConfirmation({
+                customerName: fullName,
+                customerEmail: email,
+                serviceLabel: serviceLabel || serviceType,
+                amountPaid: priceGHS || 0,
+                currency: 'GHS',
+                paymentReference,
+                transactionDate: new Date().toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                }),
+            });
+
+            if (!paymentConfirmation.success) {
+                logger.warn('Payment confirmation email failed', { bookingId: data.id, error: paymentConfirmation.error });
+            }
         }
 
         // Generate Cal.com prefill URL for scheduling (consultation only)
@@ -128,7 +150,7 @@ export async function POST(request: NextRequest) {
             emailSent: emailResult.success,
         });
     } catch (error) {
-        console.error('Booking API error:', error);
+        logger.error('Booking API error', error, { endpoint: 'POST /api/bookings' });
         return NextResponse.json(
             { error: 'Internal server error' },
             { status: 500 }

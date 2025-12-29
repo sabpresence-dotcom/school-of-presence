@@ -9,6 +9,7 @@ import { Label } from '@/components/ui/label';
 import { supabase } from '@/lib/supabase/client';
 import { Loader2, Eye, EyeOff, Mail, Lock, User } from 'lucide-react';
 import { useRouter } from 'next/navigation';
+import { ForgotPasswordModal } from '@/components/ForgotPasswordModal';
 
 interface AuthModalProps {
     isOpen: boolean;
@@ -22,6 +23,7 @@ export function AuthModal({ isOpen, onClose, onSuccess, defaultTab = 'login' }: 
     const [error, setError] = useState<string | null>(null);
     const [showPassword, setShowPassword] = useState(false);
     const [successMessage, setSuccessMessage] = useState<string | null>(null);
+    const [showForgotPassword, setShowForgotPassword] = useState(false);
     const router = useRouter();
 
     const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -167,6 +169,15 @@ export function AuthModal({ isOpen, onClose, onSuccess, defaultTab = 'login' }: 
                                         </div>
                                     </div>
                                 )}
+                                <div className="flex items-center justify-end">
+                                    <button
+                                        type="button"
+                                        onClick={() => setShowForgotPassword(true)}
+                                        className="text-sm text-slate-400 hover:text-primary transition-colors"
+                                    >
+                                        Forgot password?
+                                    </button>
+                                </div>
                                 <Button type="submit" className="w-full bg-primary text-primary-foreground hover:bg-primary/90" disabled={isLoading}>
                                     {isLoading ? <Loader2 className="h-4 w-4 animate-spin" /> : 'Sign In'}
                                 </Button>
@@ -248,6 +259,10 @@ export function AuthModal({ isOpen, onClose, onSuccess, defaultTab = 'login' }: 
                     </Tabs>
                 )}
             </DialogContent>
+            <ForgotPasswordModal
+                isOpen={showForgotPassword}
+                onClose={() => setShowForgotPassword(false)}
+            />
         </Dialog>
     );
 }
