@@ -1,6 +1,8 @@
 "use client";
 
 import BookingForm from '@/components/BookingForm';
+import { Suspense } from 'react';
+import { BookingFormSkeleton } from '@/components/BookingFormSkeleton';
 
 export default function BookingPage() {
     return (
@@ -15,9 +17,11 @@ export default function BookingPage() {
                     </p>
                 </div>
 
-                <div className="glass-card luxury-border rounded-2xl p-6 sm:p-10 bg-black/40">
-                    <BookingForm />
-                </div>
+                <Suspense fallback={<BookingFormSkeleton />}>
+                    <div className="glass-card luxury-border rounded-2xl p-6 sm:p-10 bg-black/40">
+                        <BookingForm />
+                    </div>
+                </Suspense>
             </div>
         </div>
     );
