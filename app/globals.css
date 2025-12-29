@@ -245,30 +245,6 @@
         [class*="motion-"] {
             max-width: 100%;
         }
-
-        /* Fixed modal/dialog positioning for mobile */
-        [role="dialog"],
-        [data-radix-dialog-content],
-        [data-radix-alert-dialog-content] {
-            position: fixed !important;
-            left: 50% !important;
-            top: 50% !important;
-            transform: translate(-50%, -50%) !important;
-            max-width: calc(100vw - 2rem) !important;
-            max-height: calc(100vh - 4rem) !important;
-            overflow-y: auto !important;
-            overflow-x: hidden !important;
-            touch-action: none !important;
-            -webkit-overflow-scrolling: touch;
-        }
-
-        /* Prevent modal overlay from being scrollable */
-        [data-radix-dialog-overlay],
-        [data-radix-alert-dialog-overlay] {
-            position: fixed !important;
-            inset: 0 !important;
-            touch-action: none !important;
-        }
     }
 
 }
