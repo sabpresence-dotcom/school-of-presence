@@ -1,0 +1,358 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+        /* Navy Blue Suit Palette - Dark, Calm & Trustworthy */
+        --background: 218 45% 8%;
+        /* Deep Navy: #0a1628 */
+        --foreground: 210 40% 96%;
+        /* Soft Off-White: #f1f5f9 */
+        --card: 218 40% 12%;
+        /* Navy Card: #0f1d32 */
+        --card-foreground: 210 40% 96%;
+        /* Soft Off-White */
+        --popover: 218 40% 10%;
+        /* Slightly darker navy */
+        --popover-foreground: 210 40% 96%;
+        --primary: 217 91% 60%;
+        /* Trust Blue: #3b82f6 */
+        --primary-foreground: 210 40% 98%;
+        /* Near White */
+        --secondary: 215 28% 17%;
+        /* Muted Navy: #1e293b */
+        --secondary-foreground: 210 40% 96%;
+        --muted: 215 28% 17%;
+        /* Muted Navy */
+        --muted-foreground: 215 20% 55%;
+        /* Steel Gray: #64748b */
+        --accent: 215 28% 17%;
+        /* Navy Accent */
+        --accent-foreground: 210 40% 96%;
+        --destructive: 0 62.8% 30.6%;
+        --destructive-foreground: 210 40% 98%;
+        --border: 215 25% 20%;
+        /* Navy Border */
+        --input: 215 25% 20%;
+        /* Navy Input */
+        --ring: 217 91% 60%;
+        /* Trust Blue Ring */
+        --chart-1: 217 91% 60%;
+        /* Trust Blue */
+        --chart-2: 215 28% 50%;
+        /* Steel Blue */
+        --chart-3: 210 40% 40%;
+        --chart-4: 220 60% 50%;
+        --chart-5: 215 40% 45%;
+        --radius: 1rem;
+    }
+}
+
+@layer base {
+    * {
+        @apply border-border;
+    }
+
+    body {
+        @apply bg-background text-foreground;
+        overflow-x: hidden;
+        max-width: 100vw;
+        width: 100%;
+        position: relative;
+        font-feature-settings: "cv11", "ss01";
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        /* Performance optimizations */
+        text-rendering: optimizeSpeed;
+        /* Prevent horizontal scroll on mobile */
+        overscroll-behavior-x: none;
+    }
+
+    /* Content visibility for sections below the fold */
+    section:not(:first-of-type) {
+        content-visibility: auto;
+        contain-intrinsic-size: auto 500px;
+    }
+
+    /* Typography Base Styles */
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        @apply font-heading font-semibold tracking-tight;
+    }
+
+    h1 {
+        @apply text-4xl md:text-5xl lg:text-6xl;
+    }
+
+    h2 {
+        @apply text-3xl md:text-4xl;
+    }
+
+    h3 {
+        @apply text-2xl md:text-3xl;
+    }
+
+    h4 {
+        @apply text-xl md:text-2xl;
+    }
+
+    h5 {
+        @apply text-lg md:text-xl;
+    }
+
+    h6 {
+        @apply text-base md:text-lg;
+    }
+
+    p {
+        @apply text-base leading-relaxed;
+    }
+
+    /* Small text utility */
+    .text-small {
+        @apply text-sm text-slate-400;
+    }
+
+    /* Body text with better readability */
+    .prose-body {
+        @apply text-base md:text-lg leading-relaxed text-slate-300;
+    }
+
+    html {
+        scroll-behavior: smooth;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        overflow-x: hidden;
+        width: 100%;
+        max-width: 100vw;
+        overscroll-behavior-x: none;
+    }
+
+    html::-webkit-scrollbar {
+        display: none;
+    }
+
+    /* Autofill Fix */
+    input:-webkit-autofill,
+    input:-webkit-autofill:hover,
+    input:-webkit-autofill:focus,
+    input:-webkit-autofill:active {
+        -webkit-box-shadow: 0 0 0 30px hsl(var(--background)) inset !important;
+        -webkit-text-fill-color: hsl(var(--foreground)) !important;
+        transition: background-color 5000s ease-in-out 0s;
+    }
+
+    /* Accessibility: Focus States */
+    a:focus-visible,
+    button:focus-visible,
+    input:focus-visible,
+    select:focus-visible,
+    textarea:focus-visible,
+    [tabindex]:focus-visible {
+        outline: 2px solid rgba(255, 255, 255, 0.8);
+        outline-offset: 2px;
+    }
+
+    /* Skip to main content link (accessibility) */
+    .skip-to-content {
+        position: absolute;
+        top: 0;
+        left: 0;
+        background: white;
+        color: black;
+        padding: 8px 16px;
+        z-index: 100;
+        transition: transform 0.2s ease;
+        transform: translateY(-100%);
+        clip-path: inset(100% 0 0 0);
+    }
+
+    .skip-to-content:focus {
+        transform: translateY(0);
+        clip-path: none;
+    }
+
+    /* Minimum touch target size (44x44px) - Enhanced for better mobile UX */
+    @media (pointer: coarse) {
+
+        button,
+        a,
+        input[type="checkbox"],
+        input[type="radio"],
+        [role="button"] {
+            min-height: 44px;
+            min-width: 44px;
+        }
+
+        /* Ensure form inputs have adequate spacing on mobile */
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        input[type="tel"],
+        textarea,
+        select {
+            min-height: 44px;
+            padding: 12px 16px;
+        }
+    }
+
+    /* Improved focus indicators for better accessibility */
+    *:focus-visible {
+        outline: 2px solid hsl(var(--primary));
+        outline-offset: 2px;
+        border-radius: 4px;
+    }
+
+    /* Better spacing for mobile forms */
+    @media (max-width: 640px) {
+        form {
+            gap: 1.5rem;
+        }
+
+        .space-y-6>*+* {
+            margin-top: 1.5rem;
+        }
+    }
+
+    /* Mobile horizontal scroll prevention */
+    @media (max-width: 768px) {
+
+        html,
+        body {
+            overflow-x: hidden !important;
+            max-width: 100vw !important;
+            width: 100% !important;
+        }
+
+        /* Contain all content within viewport */
+        main,
+        section,
+        header,
+        footer,
+        nav,
+        .container {
+            max-width: 100vw;
+            overflow-x: hidden;
+        }
+
+        /* Prevent animations from causing overflow */
+        [class*="animate-"],
+        [class*="motion-"] {
+            max-width: 100%;
+        }
+
+        /* Fixed modal/dialog positioning for mobile */
+        [role="dialog"],
+        [data-radix-dialog-content],
+        [data-radix-alert-dialog-content] {
+            position: fixed !important;
+            left: 50% !important;
+            top: 50% !important;
+            transform: translate(-50%, -50%) !important;
+            max-width: calc(100vw - 2rem) !important;
+            max-height: calc(100vh - 4rem) !important;
+            overflow-y: auto !important;
+            overflow-x: hidden !important;
+            touch-action: none !important;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        /* Prevent modal overlay from being scrollable */
+        [data-radix-dialog-overlay],
+        [data-radix-alert-dialog-overlay] {
+            position: fixed !important;
+            inset: 0 !important;
+            touch-action: none !important;
+        }
+    }
+
+}
+
+
+@layer utilities {
+    .glass {
+        @apply bg-slate-900/40 backdrop-blur-xl border border-slate-400/10;
+    }
+
+    .glass-card {
+        @apply bg-slate-900/60 backdrop-blur-md border border-slate-400/15 shadow-xl shadow-blue-950/20;
+    }
+
+    .text-gradient {
+        @apply bg-gradient-to-r from-slate-100 via-blue-100 to-slate-100 bg-clip-text text-transparent bg-[length:200%_auto] animate-shine;
+    }
+
+    .luxury-border {
+        @apply border border-slate-400/15 hover:border-primary/40 transition-colors duration-500;
+    }
+
+    .luxury-glow {
+        transition: box-shadow 0.5s;
+    }
+
+    .luxury-glow:hover {
+        box-shadow: 0 0 30px -5px hsl(var(--primary) / 0.2);
+    }
+
+    .bg-noise {
+        background: linear-gradient(180deg, hsl(var(--background)) 0%, hsl(218 45% 6%) 100%);
+    }
+
+    /* GPU Acceleration Utilities */
+    .gpu-accelerate {
+        transform: translateZ(0);
+        backface-visibility: hidden;
+        perspective: 1000px;
+    }
+
+    .will-change-transform {
+        will-change: transform;
+    }
+
+    .will-change-opacity {
+        will-change: opacity;
+    }
+
+    /* Optimized blur for low-end devices */
+    .blur-optimized {
+        @apply backdrop-blur-md;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .blur-optimized {
+            @apply backdrop-blur-sm;
+        }
+    }
+}
+
+/* Reduced Motion Preferences - Accessibility & Performance */
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+
+    .animate-shine {
+        animation: none;
+    }
+}
+
+@keyframes shine {
+    to {
+        background-position: 200% center;
+    }
+}
+
+.animate-shine {
+    animation: shine 8s linear infinite;
+}
