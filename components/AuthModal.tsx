@@ -120,7 +120,15 @@ export function AuthModal({ isOpen, onClose, onSuccess, defaultTab = 'login' }: 
                                     <Label htmlFor="email">Email</Label>
                                     <div className="relative">
                                         <Mail className="absolute left-4 top-3 h-4 w-4 text-slate-500" />
-                                        <Input id="email" name="email" type="email" placeholder="name@example.com" required className="pl-14 bg-white/5 border-white/10 text-white" />
+                                        <Input
+                                            id="email"
+                                            name="email"
+                                            type="email"
+                                            placeholder="name@example.com"
+                                            required
+                                            className="pl-16 bg-white/5 border-white/10 text-white"
+                                            style={{ paddingLeft: '4rem' }}
+                                        />
                                     </div>
                                 </div>
                                 <div className="space-y-2">
@@ -132,7 +140,8 @@ export function AuthModal({ isOpen, onClose, onSuccess, defaultTab = 'login' }: 
                                             name="password"
                                             type={showPassword ? "text" : "password"}
                                             required
-                                            className="pl-14 pr-10 bg-white/5 border-white/10 text-white"
+                                            className="pl-16 pr-10 bg-white/5 border-white/10 text-white"
+                                            style={{ paddingLeft: '4rem' }}
                                         />
                                         <button
                                             type="button"
@@ -170,14 +179,29 @@ export function AuthModal({ isOpen, onClose, onSuccess, defaultTab = 'login' }: 
                                     <Label htmlFor="fullName">Full Name</Label>
                                     <div className="relative">
                                         <User className="absolute left-4 top-3 h-4 w-4 text-slate-500" />
-                                        <Input id="fullName" name="fullName" placeholder="Your Name" required className="pl-14 bg-white/5 border-white/10 text-white" />
+                                        <Input
+                                            id="fullName"
+                                            name="fullName"
+                                            placeholder="Your Name"
+                                            required
+                                            className="pl-16 bg-white/5 border-white/10 text-white"
+                                            style={{ paddingLeft: '4rem' }}
+                                        />
                                     </div>
                                 </div>
                                 <div className="space-y-2">
                                     <Label htmlFor="signup-email">Email</Label>
                                     <div className="relative">
                                         <Mail className="absolute left-4 top-3 h-4 w-4 text-slate-500" />
-                                        <Input id="signup-email" name="email" type="email" placeholder="name@example.com" required className="pl-14 bg-white/5 border-white/10 text-white" />
+                                        <Input
+                                            id="signup-email"
+                                            name="email"
+                                            type="email"
+                                            placeholder="name@example.com"
+                                            required
+                                            className="pl-16 bg-white/5 border-white/10 text-white"
+                                            style={{ paddingLeft: '4rem' }}
+                                        />
                                     </div>
                                 </div>
                                 <div className="space-y-2">
@@ -189,7 +213,8 @@ export function AuthModal({ isOpen, onClose, onSuccess, defaultTab = 'login' }: 
                                             name="password"
                                             type={showPassword ? "text" : "password"}
                                             required
-                                            className="pl-14 pr-10 bg-white/5 border-white/10 text-white"
+                                            className="pl-16 pr-10 bg-white/5 border-white/10 text-white"
+                                            style={{ paddingLeft: '4rem' }}
                                         />
                                         <button
                                             type="button"
