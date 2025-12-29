@@ -72,9 +72,8 @@ export function ForgotPasswordModal({ isOpen, onClose }: ForgotPasswordModalProp
                             <CheckCircle className="h-8 w-8 text-green-500" />
                         </div>
                         <h3 className="text-xl font-bold text-white">Reset Link Sent!</h3>
-                        {/* eslint-disable-next-line react/no-unescaped-entities */}
                         <p className="text-slate-400">
-                            We've sent a password reset link to <span className="text-white font-medium">{email}</span>.
+                            We&apos;ve sent a password reset link to <span className="text-white font-medium">{email}</span>.
                             Click the link in the email to create a new password.
                         </p>
                         <Button
