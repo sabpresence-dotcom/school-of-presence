@@ -119,20 +119,20 @@ export function AuthModal({ isOpen, onClose, onSuccess, defaultTab = 'login' }: 
                                 <div className="space-y-2">
                                     <Label htmlFor="email">Email</Label>
                                     <div className="relative">
-                                        <Mail className="absolute left-3 top-3 h-4 w-4 text-slate-500" />
-                                        <Input id="email" name="email" type="email" placeholder="name@example.com" required className="pl-12 bg-white/5 border-white/10 text-white" />
+                                        <Mail className="absolute left-4 top-3 h-4 w-4 text-slate-500" />
+                                        <Input id="email" name="email" type="email" placeholder="name@example.com" required className="pl-14 bg-white/5 border-white/10 text-white" />
                                     </div>
                                 </div>
                                 <div className="space-y-2">
                                     <Label htmlFor="password">Password</Label>
                                     <div className="relative">
-                                        <Lock className="absolute left-3 top-3 h-4 w-4 text-slate-500" />
+                                        <Lock className="absolute left-4 top-3 h-4 w-4 text-slate-500" />
                                         <Input
                                             id="password"
                                             name="password"
                                             type={showPassword ? "text" : "password"}
                                             required
-                                            className="pl-12 pr-10 bg-white/5 border-white/10 text-white"
+                                            className="pl-14 pr-10 bg-white/5 border-white/10 text-white"
                                         />
                                         <button
                                             type="button"
@@ -169,27 +169,27 @@ export function AuthModal({ isOpen, onClose, onSuccess, defaultTab = 'login' }: 
                                 <div className="space-y-2">
                                     <Label htmlFor="fullName">Full Name</Label>
                                     <div className="relative">
-                                        <User className="absolute left-3 top-3 h-4 w-4 text-slate-500" />
-                                        <Input id="fullName" name="fullName" placeholder="Your Name" required className="pl-12 bg-white/5 border-white/10 text-white" />
+                                        <User className="absolute left-4 top-3 h-4 w-4 text-slate-500" />
+                                        <Input id="fullName" name="fullName" placeholder="Your Name" required className="pl-14 bg-white/5 border-white/10 text-white" />
                                     </div>
                                 </div>
                                 <div className="space-y-2">
                                     <Label htmlFor="signup-email">Email</Label>
                                     <div className="relative">
-                                        <Mail className="absolute left-3 top-3 h-4 w-4 text-slate-500" />
-                                        <Input id="signup-email" name="email" type="email" placeholder="name@example.com" required className="pl-12 bg-white/5 border-white/10 text-white" />
+                                        <Mail className="absolute left-4 top-3 h-4 w-4 text-slate-500" />
+                                        <Input id="signup-email" name="email" type="email" placeholder="name@example.com" required className="pl-14 bg-white/5 border-white/10 text-white" />
                                     </div>
                                 </div>
                                 <div className="space-y-2">
                                     <Label htmlFor="signup-password">Password</Label>
                                     <div className="relative">
-                                        <Lock className="absolute left-3 top-3 h-4 w-4 text-slate-500" />
+                                        <Lock className="absolute left-4 top-3 h-4 w-4 text-slate-500" />
                                         <Input
                                             id="signup-password"
                                             name="password"
                                             type={showPassword ? "text" : "password"}
                                             required
-                                            className="pl-12 pr-10 bg-white/5 border-white/10 text-white"
+                                            className="pl-14 pr-10 bg-white/5 border-white/10 text-white"
                                         />
                                         <button
                                             type="button"
